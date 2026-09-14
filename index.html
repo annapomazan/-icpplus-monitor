@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICPPLUS Monitor — Barcelona</title>
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --surface2: #f0efe9;
+    --border: #dddbd4;
+    --text: #1a1916;
+    --muted: #6b6960;
+    --accent: #1a5cad;
+    --accent-light: #e8f0fb;
+    --green: #1a7a4a;
+    --green-light: #e6f5ee;
+    --red: #b52b2b;
+    --red-light: #fbe8e8;
+    --amber: #8a5c00;
+    --amber-light: #fff7e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5;
+    min-height: 100vh; padding: 24px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 22px; font-weight: 700; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+  .toprow { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .last-run { font-size: 12px; color: var(--muted); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px;
+    border: 1px solid #c8c6be; background: var(--surface); color: var(--text); font-size: 13px;
+    font-weight: 600; cursor: pointer; text-decoration: none;
+  }
+  .btn:hover { background: var(--surface2); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: white; }
+
+  .alert-banner {
+    background: var(--green-light); border: 1px solid #9fd4b8; color: var(--green);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; display: none;
+  }
+  .alert-banner.show { display: block; }
+  .alert-banner .title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .alert-banner a { color: var(--green); font-weight: 700; text-decoration: underline; }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .card.available { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,122,74,0.15); }
+  .card.error { border-color: var(--red); }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+  .card-title { font-weight: 700; font-size: 14px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+  }
+  .badge.unavailable { background: var(--surface2); color: var(--muted); }
+  .badge.available { background: var(--green-light); color: var(--green); }
+  .badge.error { background: var(--red-light); color: var(--red); }
+  .badge.disabled { background: var(--amber-light); color: var(--amber); }
+  .badge.pending { background: var(--accent-light); color: var(--accent); }
+
+  .meta { font-size: 12px; color: var(--muted); margin: 3px 0; }
+  .meta b { color: var(--text); font-weight: 600; }
+  .card a.go {
+    display: block; text-align: center; margin-top: 10px; padding: 8px; border-radius: 8px;
+    background: var(--green); color: white; font-weight: 700; text-decoration: none; font-size: 13px;
+  }
+  .empty { color: var(--muted); padding: 40px; text-align: center; }
+
+  details { margin-top: 8px; }
+  summary { font-size: 12px; color: var(--accent); cursor: pointer; }
+  .logs { font-size: 11px; color: var(--muted); margin-top: 6px; white-space: pre-wrap; font-family: ui-monospace, monospace; max-height: 140px; overflow-y: auto; }
+
+  footer { margin-top: 28px; font-size: 12px; color: var(--muted); text-align: center; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ICPPLUS Monitor — Barcelona</h1>
+    <div class="sub">Live appointment-availability status for each client. Alerts also go to Telegram the moment a slot may be open.</div>
+  </header>
+
+  <div class="toprow">
+    <div class="last-run" id="lastRun">Loading…</div>
+    <div style="display:flex; gap:8px;">
+      <a class="btn" id="refreshBtn" href="#">↻ Refresh</a>
+      <a class="btn primary" href="https://sede.administracionespublicas.gob.es/icpplus/index.html" target="_blank">Open ICPPLUS</a>
+    </div>
+  </div>
+
+  <div class="alert-banner" id="alertBanner">
+    <div class="title">🔔 Slot(s) may be available!</div>
+    <div id="alertList"></div>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="empty">Loading status…</div>
+  </div>
+
+  <footer>
+    Data refreshes automatically every ~15 minutes via GitHub Actions.
+    <br>
+    <a href="https://github.com" target="_blank" id="repoLink">View repository</a>
+  </footer>
+</div>
+
+<script>
+  // ---- CONFIGURE THESE TWO LINES ----
+  const GH_USER = "YOUR_GITHUB_USERNAME";
+  const GH_REPO = "icpplus-monitor";
+  const GH_BRANCH = "main";
+  // ------------------------------------
+
+  const STATUS_URL = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/data/status.json`;
+  const PROFILES_URL = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/data/profiles.json`;
+  const REPO_URL = `https://github.com/${GH_USER}/${GH_REPO}`;
+
+  document.getElementById('repoLink').href = REPO_URL;
+
+  function fmtTime(iso) {
+    if (!iso) return 'never';
+    const d = new Date(iso);
+    return d.toLocaleString();
+  }
+
+  function statusLabel(s) {
+    switch (s) {
+      case 'available': return { cls: 'available', text: 'AVAILABLE!' };
+      case 'unavailable': return { cls: 'unavailable', text: 'No slots' };
+      case 'error': return { cls: 'error', text: 'Error' };
+      default: return { cls: 'pending', text: 'Pending' };
+    }
+  }
+
+  async function load() {
+    const grid = document.getElementById('grid');
+    try {
+      const [statusRes, profilesRes] = await Promise.all([
+        fetch(STATUS_URL + '?t=' + Date.now()),
+        fetch(PROFILES_URL + '?t=' + Date.now()),
+      ]);
+      const status = await statusRes.json();
+      const profiles = await profilesRes.json();
+
+      document.getElementById('lastRun').textContent =
+        'Last check: ' + fmtTime(status.last_run);
+
+      grid.innerHTML = '';
+      const alerts = [];
+
+      profiles.forEach(profile => {
+        const result = (status.profiles && status.profiles[profile.id]) || null;
+        const enabled = profile.enabled !== false;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        let badgeInfo;
+        if (!enabled) {
+          badgeInfo = { cls: 'disabled', text: 'Disabled' };
+        } else if (result) {
+          badgeInfo = statusLabel(result.status);
+          if (result.status === 'available') {
+            card.classList.add('available');
+            alerts.push({ name: profile.name, url: result.url });
+          }
+          if (result.status === 'error') card.classList.add('error');
+        } else {
+          badgeInfo = statusLabel(null);
+        }
+
+        const header = document.createElement('div');
+        header.className = 'card-header';
+        header.innerHTML = `
+          <div class="card-title">${profile.name}</div>
+          <span class="badge ${badgeInfo.cls}">${badgeInfo.text}</span>
+        `;
+        card.appendChild(header);
+
+        const meta = document.createElement('div');
+        meta.innerHTML = `
+          <div class="meta"><b>Province:</b> ${profile.province}</div>
+          <div class="meta"><b>Procedure:</b> ${profile.procedure_name}</div>
+          <div class="meta"><b>Last checked:</b> ${result ? fmtTime(result.last_check) : '—'}</div>
+        `;
+        card.appendChild(meta);
+
+        if (result && result.status === 'available' && result.url) {
+          const link = document.createElement('a');
+          link.className = 'go';
+          link.href = result.url;
+          link.target = '_blank';
+          link.textContent = '⚡ Open booking page now';
+          card.appendChild(link);
+        }
+
+        if (result && result.logs && result.logs.length) {
+          const details = document.createElement('details');
+          const summary = document.createElement('summary');
+          summary.textContent = 'Show log';
+          const logs = document.createElement('div');
+          logs.className = 'logs';
+          logs.textContent = result.logs.join('\n');
+          details.appendChild(summary);
+          details.appendChild(logs);
+          card.appendChild(details);
+        }
+
+        grid.appendChild(card);
+      });
+
+      if (!profiles.length) {
+        grid.innerHTML = '<div class="empty">No client profiles configured yet.</div>';
+      }
+
+      const banner = document.getElementById('alertBanner');
+      const alertList = document.getElementById('alertList');
+      if (alerts.length) {
+        banner.classList.add('show');
+        alertList.innerHTML = alerts.map(a =>
+          `${a.name}: <a href="${a.url}" target="_blank">open booking page</a>`
+        ).join('<br>');
+      } else {
+        banner.classList.remove('show');
+      }
+
+    } catch (e) {
+      grid.innerHTML = `<div class="empty">Could not load status (${e.message}).<br>Check that GH_USER / GH_REPO are set correctly in this page's script.</div>`;
+    }
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    load();
+  });
+
+  load();
+  setInterval(load, 60000);
+</script>
+</body>
+</html>

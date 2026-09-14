@@ -1,0 +1,29 @@
+[
+  {
+    "id": "client1",
+    "name": "Cliente 1 - TIE Huellas",
+    "enabled": true,
+    "province": "Barcelona",
+    "procedure_name": "POLICIA-TOMA DE HUELLAS (EXPEDICION DE TARJETA)",
+    "no_slots_phrases": [],
+    "selectors": {}
+  },
+  {
+    "id": "client2",
+    "name": "Cliente 2 - TIE Huellas",
+    "enabled": true,
+    "province": "Barcelona",
+    "procedure_name": "POLICIA-TOMA DE HUELLAS (EXPEDICION DE TARJETA)",
+    "no_slots_phrases": [],
+    "selectors": {}
+  },
+  {
+    "id": "client3",
+    "name": "Cliente 3 - TIE Huellas",
+    "enabled": false,
+    "province": "Barcelona",
+    "procedure_name": "POLICIA-TOMA DE HUELLAS (EXPEDICION DE TARJETA)",
+    "no_slots_phrases": [],
+    "selectors": {}
+  }
+]

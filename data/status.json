@@ -1,0 +1,31 @@
+{
+  "profiles": {
+    "client1": {
+      "name": "Cliente 1 - TIE Huellas",
+      "province": "Barcelona",
+      "procedure_name": "POLICIA-TOMA DE HUELLAS (EXPEDICION DE TARJETA)",
+      "status": "error",
+      "url": null,
+      "last_check": "2026-09-14T06:13:00+00:00",
+      "logs": [
+        "[06:12:30] Opening ICPPLUS home page...",
+        "[06:12:40] Selecting province 'Barcelona'...",
+        "[06:13:00] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x5593316bc03a <unknown>\n#1 0x5593310244c9 <unknown>\n#2 0x55933107a242 <unknown>\n#3 0x55933107a4a1 <unknown>\n#4 0x5593310c5394 <unknown>\n#5 0x5593310c25ad <unknown>\n#6 0x55933106d83b <unknown>\n#7 0x55933106e621 <unknown>\n#8 0x5593316805f0 <unknown>\n#9 0x55933167ec6a <unknown>\n#10 0x5593316699f5 <unknown>\n#11 0x55933167f92a <unknown>\n#12 0x559331652d10 <unknown>\n#13 0x5593316a7158 <unknown>\n#14 0x5593316a72f5 <unknown>\n#15 0x5593316babc3 <unknown>\n#16 0x7f1fb8e9cb84 <unknown>\n#17 0x7f1fb8f29d6c <unknown>\n"
+      ]
+    },
+    "client2": {
+      "name": "Cliente 2 - TIE Huellas",
+      "province": "Barcelona",
+      "procedure_name": "POLICIA-TOMA DE HUELLAS (EXPEDICION DE TARJETA)",
+      "status": "error",
+      "url": null,
+      "last_check": "2026-09-14T06:13:33+00:00",
+      "logs": [
+        "[06:13:04] Opening ICPPLUS home page...",
+        "[06:13:12] Selecting province 'Barcelona'...",
+        "[06:13:33] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x55b96105903a <unknown>\n#1 0x55b9609c14c9 <unknown>\n#2 0x55b960a17242 <unknown>\n#3 0x55b960a174a1 <unknown>\n#4 0x55b960a62394 <unknown>\n#5 0x55b960a5f5ad <unknown>\n#6 0x55b960a0a83b <unknown>\n#7 0x55b960a0b621 <unknown>\n#8 0x55b96101d5f0 <unknown>\n#9 0x55b96101bc6a <unknown>\n#10 0x55b9610069f5 <unknown>\n#11 0x55b96101c92a <unknown>\n#12 0x55b960fefd10 <unknown>\n#13 0x55b961044158 <unknown>\n#14 0x55b9610442f5 <unknown>\n#15 0x55b961057bc3 <unknown>\n#16 0x7f1a27c9cb84 <unknown>\n#17 0x7f1a27d29d6c <unknown>\n"
+      ]
+    }
+  },
+  "last_run": "2026-09-14T06:13:36+00:00"
+}
