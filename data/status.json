@@ -32,13 +32,13 @@
       "procedure_name": "POLICÍA - UCRANIA : SOLICITUD PROTECCIÓN TEMPORAL DESPLAZADOS",
       "status": "error",
       "url": null,
-      "last_check": "2026-09-14T16:54:04+00:00",
+      "last_check": "2026-09-14T17:02:18+00:00",
       "logs": [
-        "[16:53:36] Opening ICPPLUS home page...",
-        "[16:53:44] Selecting province 'Alicante'...",
-        "[16:54:04] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x55aca2f3a03a <unknown>\n#1 0x55aca28a24c9 <unknown>\n#2 0x55aca28f8242 <unknown>\n#3 0x55aca28f84a1 <unknown>\n#4 0x55aca2943394 <unknown>\n#5 0x55aca29405ad <unknown>\n#6 0x55aca28eb83b <unknown>\n#7 0x55aca28ec621 <unknown>\n#8 0x55aca2efe5f0 <unknown>\n#9 0x55aca2efcc6a <unknown>\n#10 0x55aca2ee79f5 <unknown>\n#11 0x55aca2efd92a <unknown>\n#12 0x55aca2ed0d10 <unknown>\n#13 0x55aca2f25158 <unknown>\n#14 0x55aca2f252f5 <unknown>\n#15 0x55aca2f38bc3 <unknown>\n#16 0x7fe6ac69cb84 <unknown>\n#17 0x7fe6ac729d6c <unknown>\n"
+        "[17:01:49] Opening ICPPLUS home page...",
+        "[17:01:58] Selecting province 'Alicante'...",
+        "[17:02:18] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x561449f9903a <unknown>\n#1 0x5614499014c9 <unknown>\n#2 0x561449957242 <unknown>\n#3 0x5614499574a1 <unknown>\n#4 0x5614499a2394 <unknown>\n#5 0x56144999f5ad <unknown>\n#6 0x56144994a83b <unknown>\n#7 0x56144994b621 <unknown>\n#8 0x561449f5d5f0 <unknown>\n#9 0x561449f5bc6a <unknown>\n#10 0x561449f469f5 <unknown>\n#11 0x561449f5c92a <unknown>\n#12 0x561449f2fd10 <unknown>\n#13 0x561449f84158 <unknown>\n#14 0x561449f842f5 <unknown>\n#15 0x561449f97bc3 <unknown>\n#16 0x7fdae309cb84 <unknown>\n#17 0x7fdae3129d6c <unknown>\n"
       ]
     }
   },
-  "last_run": "2026-09-14T16:54:07+00:00"
+  "last_run": "2026-09-14T17:02:21+00:00"
 }
