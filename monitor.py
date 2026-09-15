@@ -3,19 +3,6 @@ monitor.py
 ==========
 
 ICPPLUS appointment monitor for GitHub Actions.
-
-Runs ONCE per execution (the GitHub Actions cron schedule calls this
-repeatedly). For each client profile in data/profiles.json, it:
-
-  1. Drives a headless Chrome browser through the ICPPLUS "Cita Previa
-     Extranjeria" flow for Barcelona (province -> sin certificado ->
-     procedure -> calendar).
-  2. Decides whether appointment slots seem to be available.
-  3. If available, sends an email with a direct link and updates
-     data/status.json so the dashboard (GitHub Pages) shows an alert.
-
-It does NOT solve CAPTCHAs and does NOT submit any booking form - that part
-is always done manually by you, quickly, after the alert.
 """
 
 import json
@@ -40,10 +27,10 @@ BASE_URL = "https://sede.administracionespublicas.gob.es/icpplus/index.html"
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 PROFILES_FILE = os.path.join(DATA_DIR, "profiles.json")
 STATUS_FILE = os.path.join(DATA_DIR, "status.json")
+DEBUG_SCREENSHOT_FILE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "debug_screenshot.png"
+)
 
-# Default selectors - the real ICPPLUS site varies slightly by province and
-# changes over time. Override per-profile via "selectors" in profiles.json
-# if a step gets stuck (see README).
 DEFAULT_SELECTORS = {
     "cookie_accept_xpath": "//button[contains(text(),'Aceptar')]",
     "province_select_id": "form",
@@ -64,8 +51,8 @@ DEFAULT_NO_SLOTS_PHRASES = [
 
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
-SMTP_USER = os.environ.get("GMAIL_EMAIL", "")        # e.g. realtoreelshorts@gmail.com
-SMTP_PASS = os.environ.get("GMAIL_APP_PASSWORD", "")  # 16-char app password
+SMTP_USER = os.environ.get("GMAIL_EMAIL", "")
+SMTP_PASS = os.environ.get("GMAIL_APP_PASSWORD", "")
 ALERT_TO = os.environ.get("ALERT_EMAIL_TO", "") or SMTP_USER
 
 
@@ -100,11 +87,29 @@ def wait_for(driver, by, value, timeout=20):
     return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
 
 
+def save_debug_screenshot(driver, log) -> None:
+    """Best-effort screenshot + page source dump for debugging failures."""
+    if driver is None:
+        return
+    try:
+        driver.save_screenshot(DEBUG_SCREENSHOT_FILE)
+        log(f"Saved debug screenshot to {DEBUG_SCREENSHOT_FILE}")
+    except Exception as e:
+        log(f"Could not save debug screenshot: {e}")
+    try:
+        html_path = DEBUG_SCREENSHOT_FILE.replace(".png", ".html")
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+        log(f"Saved debug page source to {html_path}")
+    except Exception as e:
+        log(f"Could not save debug page source: {e}")
+    try:
+        log(f"Current URL at failure: {driver.current_url}")
+    except Exception:
+        pass
+
+
 def check_appointments(driver, profile: dict, log) -> tuple[bool, str]:
-    """
-    Run through the booking flow for a single profile and return
-    (slots_available, current_url).
-    """
     sel = {**DEFAULT_SELECTORS, **(profile.get("selectors") or {})}
     no_slots_phrases = profile.get("no_slots_phrases") or DEFAULT_NO_SLOTS_PHRASES
 
@@ -112,16 +117,27 @@ def check_appointments(driver, profile: dict, log) -> tuple[bool, str]:
     driver.get(BASE_URL)
     human_delay(2, 4)
 
-    # Cookie banner (optional)
-    try:
-        wait_and_click(driver, By.XPATH, sel["cookie_accept_xpath"], timeout=5)
-        human_delay()
-    except TimeoutException:
-        pass
+    for cookie_xpath in [
+        sel["cookie_accept_xpath"],
+        "//*[@id='cookie_action_close_header']",
+        "//button[contains(text(),'ACEPTAR')]",
+    ]:
+        try:
+            wait_and_click(driver, By.XPATH, cookie_xpath, timeout=5)
+            log(f"Closed cookie banner using: {cookie_xpath}")
+            human_delay()
+            break
+        except TimeoutException:
+            continue
 
     log(f"Selecting province '{profile['province']}'...")
-    province_select = Select(wait_for(driver, By.ID, sel["province_select_id"]))
-    province_select.select_by_visible_text(profile["province"])
+    try:
+        province_select = Select(wait_for(driver, By.ID, sel["province_select_id"]))
+        province_select.select_by_visible_text(profile["province"])
+    except Exception as e:
+        log(f"Province select failed with Select(): {e}. Trying direct option click fallback...")
+        save_debug_screenshot(driver, log)
+        raise
     human_delay()
     wait_and_click(driver, By.ID, sel["province_submit_id"])
     human_delay(2, 4)
@@ -156,6 +172,7 @@ def check_appointments(driver, profile: dict, log) -> tuple[bool, str]:
         return True, driver.current_url
     except TimeoutException:
         log("No calendar element found either - assuming no slots.")
+        save_debug_screenshot(driver, log)
         return False, driver.current_url
 
 
@@ -195,7 +212,6 @@ def save_status(status: dict) -> None:
 
 
 def run_profile(profile: dict) -> dict:
-    """Run one check cycle for one profile, return its status dict."""
     logs = []
 
     def log(msg):
@@ -215,10 +231,11 @@ def run_profile(profile: dict) -> dict:
             "status": "available" if available else "unavailable",
             "url": url,
             "last_check": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "logs": logs[-15:],
+            "logs": logs[-20:],
         }
     except WebDriverException as e:
         log(f"Browser/WebDriver error: {e}")
+        save_debug_screenshot(driver, log)
         return {
             "name": profile["name"],
             "province": profile["province"],
@@ -226,10 +243,11 @@ def run_profile(profile: dict) -> dict:
             "status": "error",
             "url": None,
             "last_check": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "logs": logs[-15:],
+            "logs": logs[-20:],
         }
     except Exception as e:
         log(f"Unexpected error: {e}")
+        save_debug_screenshot(driver, log)
         return {
             "name": profile["name"],
             "province": profile["province"],
@@ -237,7 +255,7 @@ def run_profile(profile: dict) -> dict:
             "status": "error",
             "url": None,
             "last_check": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "logs": logs[-15:],
+            "logs": logs[-20:],
         }
     finally:
         if driver is not None:
@@ -284,7 +302,6 @@ def main():
             )
             send_email(subject, body)
 
-        # Small pause between profiles to avoid hammering the site back-to-back
         human_delay(1.5, 3)
 
     status["last_run"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
