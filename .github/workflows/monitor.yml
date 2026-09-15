@@ -45,3 +45,10 @@ jobs:
           git add data/status.json
           git diff --quiet --cached || git commit -m "Update status [skip ci]"
           git push
+          - name: Upload debug screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshot
+          path: debug_screenshot.png
+          if-no-files-found: ignore
