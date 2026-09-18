@@ -32,20 +32,15 @@
       "procedure_name": "POLICÍA - UCRANIA : SOLICITUD PROTECCIÓN TEMPORAL DESPLAZADOS",
       "status": "error",
       "url": null,
-      "last_check": "2026-09-18T09:55:55+00:00",
+      "last_check": "2026-09-18T10:10:48+00:00",
       "logs": [
-        "[09:55:15] Opening ICPPLUS home page...",
-        "[09:55:35] Selecting province 'Alicante'...",
-        "[09:55:55] Province select failed with Select(): Message: \nStacktrace:\n#0 0x55af8b26c03a <unknown>\n#1 0x55af8abd44c9 <unknown>\n#2 0x55af8ac2a242 <unknown>\n#3 0x55af8ac2a4a1 <unknown>\n#4 0x55af8ac75394 <unknown>\n#5 0x55af8ac725ad <unknown>\n#6 0x55af8ac1d83b <unknown>\n#7 0x55af8ac1e621 <unknown>\n#8 0x55af8b2305f0 <unknown>\n#9 0x55af8b22ec6a <unknown>\n#10 0x55af8b2199f5 <unknown>\n#11 0x55af8b22f92a <unknown>\n#12 0x55af8b202d10 <unknown>\n#13 0x55af8b257158 <unknown>\n#14 0x55af8b2572f5 <unknown>\n#15 0x55af8b26abc3 <unknown>\n#16 0x7f23fc49cb84 <unknown>\n#17 0x7f23fc529d6c <unknown>\n. Trying direct option click fallback...",
-        "[09:55:55] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[09:55:55] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[09:55:55] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html",
-        "[09:55:55] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x55af8b26c03a <unknown>\n#1 0x55af8abd44c9 <unknown>\n#2 0x55af8ac2a242 <unknown>\n#3 0x55af8ac2a4a1 <unknown>\n#4 0x55af8ac75394 <unknown>\n#5 0x55af8ac725ad <unknown>\n#6 0x55af8ac1d83b <unknown>\n#7 0x55af8ac1e621 <unknown>\n#8 0x55af8b2305f0 <unknown>\n#9 0x55af8b22ec6a <unknown>\n#10 0x55af8b2199f5 <unknown>\n#11 0x55af8b22f92a <unknown>\n#12 0x55af8b202d10 <unknown>\n#13 0x55af8b257158 <unknown>\n#14 0x55af8b2572f5 <unknown>\n#15 0x55af8b26abc3 <unknown>\n#16 0x7f23fc49cb84 <unknown>\n#17 0x7f23fc529d6c <unknown>\n",
-        "[09:55:55] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[09:55:55] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[09:55:55] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html"
+        "[10:09:48] Opening ICPPLUS home page...",
+        "[10:10:48] Browser/WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.002\n  (Session info: chrome=152.0.7977.82)\nStacktrace:\n#0 0x55af85c7103a <unknown>\n#1 0x55af855d94c9 <unknown>\n#2 0x55af855c0f5b <unknown>\n#3 0x55af855c0bd6 <unknown>\n#4 0x55af855be7b8 <unknown>\n#5 0x55af855bf13f <unknown>\n#6 0x55af855ce200 <unknown>\n#7 0x55af855e8147 <unknown>\n#8 0x55af855efb1b <unknown>\n#9 0x55af855bf899 <unknown>\n#10 0x55af855e7ea7 <unknown>\n#11 0x55af85677470 <unknown>\n#12 0x55af8562283b <unknown>\n#13 0x55af85623621 <unknown>\n#14 0x55af85c355f0 <unknown>\n#15 0x55af85c33c6a <unknown>\n#16 0x55af85c1e9f5 <unknown>\n#17 0x55af85c3492a <unknown>\n#18 0x55af85c07d10 <unknown>\n#19 0x55af85c5c158 <unknown>\n#20 0x55af85c5c2f5 <unknown>\n#21 0x55af85c6fbc3 <unknown>\n#22 0x7f984a89cb84 <unknown>\n#23 0x7f984a929d6c <unknown>\n",
+        "[10:10:48] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
+        "[10:10:48] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
+        "[10:10:48] Current URL at failure: data:,"
       ]
     }
   },
-  "last_run": "2026-09-18T09:55:58+00:00"
+  "last_run": "2026-09-18T10:10:50+00:00"
 }
