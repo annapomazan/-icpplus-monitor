@@ -32,20 +32,20 @@
       "procedure_name": "POLICÍA - UCRANIA : SOLICITUD PROTECCIÓN TEMPORAL DESPLAZADOS",
       "status": "error",
       "url": null,
-      "last_check": "2026-10-12T10:28:33+00:00",
+      "last_check": "2026-10-12T10:49:50+00:00",
       "logs": [
-        "[10:27:54] Opening ICPPLUS home page...",
-        "[10:28:13] Selecting province 'Alicante'...",
-        "[10:28:33] Province select failed with Select(): Message: \nStacktrace:\n#0 0x556a3e9e7aaa <unknown>\n#1 0x556a3e315aa9 <unknown>\n#2 0x556a3e36c3ff <unknown>\n#3 0x556a3e36c671 <unknown>\n#4 0x556a3e3b8f74 <unknown>\n#5 0x556a3e3b61df <unknown>\n#6 0x556a3e35f148 <unknown>\n#7 0x556a3e35ff11 <unknown>\n#8 0x556a3e9aa5ac <unknown>\n#9 0x556a3e9a8dc5 <unknown>\n#10 0x556a3e993e95 <unknown>\n#11 0x556a3e9a9a1a <unknown>\n#12 0x556a3e97c5c9 <unknown>\n#13 0x556a3e9d20f8 <unknown>\n#14 0x556a3e9d2295 <unknown>\n#15 0x556a3e9e63f3 <unknown>\n#16 0x7f329f49cb84 <unknown>\n#17 0x7f329f529ecc <unknown>\n. Trying direct option click fallback...",
-        "[10:28:33] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[10:28:33] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[10:28:33] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html",
-        "[10:28:33] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x556a3e9e7aaa <unknown>\n#1 0x556a3e315aa9 <unknown>\n#2 0x556a3e36c3ff <unknown>\n#3 0x556a3e36c671 <unknown>\n#4 0x556a3e3b8f74 <unknown>\n#5 0x556a3e3b61df <unknown>\n#6 0x556a3e35f148 <unknown>\n#7 0x556a3e35ff11 <unknown>\n#8 0x556a3e9aa5ac <unknown>\n#9 0x556a3e9a8dc5 <unknown>\n#10 0x556a3e993e95 <unknown>\n#11 0x556a3e9a9a1a <unknown>\n#12 0x556a3e97c5c9 <unknown>\n#13 0x556a3e9d20f8 <unknown>\n#14 0x556a3e9d2295 <unknown>\n#15 0x556a3e9e63f3 <unknown>\n#16 0x7f329f49cb84 <unknown>\n#17 0x7f329f529ecc <unknown>\n",
-        "[10:28:33] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[10:28:33] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[10:28:33] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html"
+        "[10:49:11] Opening ICPPLUS home page...",
+        "[10:49:30] Selecting province 'Alicante'...",
+        "[10:49:50] Province select failed with Select(): Message: \nStacktrace:\n#0 0x562c24c94aaa <unknown>\n#1 0x562c245c2aa9 <unknown>\n#2 0x562c246193ff <unknown>\n#3 0x562c24619671 <unknown>\n#4 0x562c24665f74 <unknown>\n#5 0x562c246631df <unknown>\n#6 0x562c2460c148 <unknown>\n#7 0x562c2460cf11 <unknown>\n#8 0x562c24c575ac <unknown>\n#9 0x562c24c55dc5 <unknown>\n#10 0x562c24c40e95 <unknown>\n#11 0x562c24c56a1a <unknown>\n#12 0x562c24c295c9 <unknown>\n#13 0x562c24c7f0f8 <unknown>\n#14 0x562c24c7f295 <unknown>\n#15 0x562c24c933f3 <unknown>\n#16 0x7f9690c9cb84 <unknown>\n#17 0x7f9690d29ecc <unknown>\n. Trying direct option click fallback...",
+        "[10:49:50] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
+        "[10:49:50] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
+        "[10:49:50] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html",
+        "[10:49:50] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x562c24c94aaa <unknown>\n#1 0x562c245c2aa9 <unknown>\n#2 0x562c246193ff <unknown>\n#3 0x562c24619671 <unknown>\n#4 0x562c24665f74 <unknown>\n#5 0x562c246631df <unknown>\n#6 0x562c2460c148 <unknown>\n#7 0x562c2460cf11 <unknown>\n#8 0x562c24c575ac <unknown>\n#9 0x562c24c55dc5 <unknown>\n#10 0x562c24c40e95 <unknown>\n#11 0x562c24c56a1a <unknown>\n#12 0x562c24c295c9 <unknown>\n#13 0x562c24c7f0f8 <unknown>\n#14 0x562c24c7f295 <unknown>\n#15 0x562c24c933f3 <unknown>\n#16 0x7f9690c9cb84 <unknown>\n#17 0x7f9690d29ecc <unknown>\n",
+        "[10:49:50] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
+        "[10:49:50] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
+        "[10:49:50] Current URL at failure: https://sede.administracionespublicas.gob.es/icpplus/index.html"
       ]
     }
   },
-  "last_run": "2026-10-12T10:28:36+00:00"
+  "last_run": "2026-10-12T10:49:53+00:00"
 }
