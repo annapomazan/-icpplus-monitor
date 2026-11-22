@@ -32,20 +32,20 @@
       "procedure_name": "POLICÍA - UCRANIA : SOLICITUD PROTECCIÓN TEMPORAL DESPLAZADOS",
       "status": "error",
       "url": null,
-      "last_check": "2026-11-22T01:53:50+00:00",
+      "last_check": "2026-11-22T14:00:04+00:00",
       "logs": [
-        "[01:53:07] Opening ICPPLUS home page...",
-        "[01:53:30] Selecting province 'Alicante'...",
-        "[01:53:50] Province select failed with Select(): Message: \nStacktrace:\n#0 0x5d405a2bbcaa <unknown>\n#1 0x5d4059befcc5 <unknown>\n#2 0x5d4059c357df <unknown>\n#3 0x5d4059c35971 <unknown>\n#4 0x5d4059c73734 <unknown>\n#5 0x5d4059c71db3 <unknown>\n#6 0x5d4059c716c1 <unknown>\n#7 0x5d4059c2c557 <unknown>\n#8 0x5d4059c2b86e <unknown>\n#9 0x5d4059c2c341 <unknown>\n#10 0x5d405a27e79c <unknown>\n#11 0x5d405a27cfcd <unknown>\n#12 0x5d405a267df5 <unknown>\n#13 0x5d405a27dc0a <unknown>\n#14 0x5d405a250b99 <unknown>\n#15 0x5d405a2a6318 <unknown>\n#16 0x5d405a2a64b5 <unknown>\n#17 0x5d405a2ba633 <unknown>\n#18 0x7f01cb2abdeb <unknown>\n#19 0x7f01cb33f4dc <unknown>\n. Trying direct option click fallback...",
-        "[01:53:50] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[01:53:50] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[01:53:50] Current URL at failure: https://mptmd.sede.gob.es/pagina?id=Extranjeria-cita-previa-extranjeria",
-        "[01:53:50] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x5d405a2bbcaa <unknown>\n#1 0x5d4059befcc5 <unknown>\n#2 0x5d4059c357df <unknown>\n#3 0x5d4059c35971 <unknown>\n#4 0x5d4059c73734 <unknown>\n#5 0x5d4059c71db3 <unknown>\n#6 0x5d4059c716c1 <unknown>\n#7 0x5d4059c2c557 <unknown>\n#8 0x5d4059c2b86e <unknown>\n#9 0x5d4059c2c341 <unknown>\n#10 0x5d405a27e79c <unknown>\n#11 0x5d405a27cfcd <unknown>\n#12 0x5d405a267df5 <unknown>\n#13 0x5d405a27dc0a <unknown>\n#14 0x5d405a250b99 <unknown>\n#15 0x5d405a2a6318 <unknown>\n#16 0x5d405a2a64b5 <unknown>\n#17 0x5d405a2ba633 <unknown>\n#18 0x7f01cb2abdeb <unknown>\n#19 0x7f01cb33f4dc <unknown>\n",
-        "[01:53:50] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
-        "[01:53:50] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
-        "[01:53:50] Current URL at failure: https://mptmd.sede.gob.es/pagina?id=Extranjeria-cita-previa-extranjeria"
+        "[13:59:22] Opening ICPPLUS home page...",
+        "[13:59:43] Selecting province 'Alicante'...",
+        "[14:00:04] Province select failed with Select(): Message: \nStacktrace:\n#0 0x5be9fcf33caa <unknown>\n#1 0x5be9fc867cc5 <unknown>\n#2 0x5be9fc8ad7df <unknown>\n#3 0x5be9fc8ad971 <unknown>\n#4 0x5be9fc8eb734 <unknown>\n#5 0x5be9fc8e9db3 <unknown>\n#6 0x5be9fc8e96c1 <unknown>\n#7 0x5be9fc8a4557 <unknown>\n#8 0x5be9fc8a386e <unknown>\n#9 0x5be9fc8a4341 <unknown>\n#10 0x5be9fcef679c <unknown>\n#11 0x5be9fcef4fcd <unknown>\n#12 0x5be9fcedfdf5 <unknown>\n#13 0x5be9fcef5c0a <unknown>\n#14 0x5be9fcec8b99 <unknown>\n#15 0x5be9fcf1e318 <unknown>\n#16 0x5be9fcf1e4b5 <unknown>\n#17 0x5be9fcf32633 <unknown>\n#18 0x7feed58abdeb <unknown>\n#19 0x7feed593f4dc <unknown>\n. Trying direct option click fallback...",
+        "[14:00:04] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
+        "[14:00:04] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
+        "[14:00:04] Current URL at failure: https://mptmd.sede.gob.es/pagina?id=Extranjeria-cita-previa-extranjeria",
+        "[14:00:04] Browser/WebDriver error: Message: \nStacktrace:\n#0 0x5be9fcf33caa <unknown>\n#1 0x5be9fc867cc5 <unknown>\n#2 0x5be9fc8ad7df <unknown>\n#3 0x5be9fc8ad971 <unknown>\n#4 0x5be9fc8eb734 <unknown>\n#5 0x5be9fc8e9db3 <unknown>\n#6 0x5be9fc8e96c1 <unknown>\n#7 0x5be9fc8a4557 <unknown>\n#8 0x5be9fc8a386e <unknown>\n#9 0x5be9fc8a4341 <unknown>\n#10 0x5be9fcef679c <unknown>\n#11 0x5be9fcef4fcd <unknown>\n#12 0x5be9fcedfdf5 <unknown>\n#13 0x5be9fcef5c0a <unknown>\n#14 0x5be9fcec8b99 <unknown>\n#15 0x5be9fcf1e318 <unknown>\n#16 0x5be9fcf1e4b5 <unknown>\n#17 0x5be9fcf32633 <unknown>\n#18 0x7feed58abdeb <unknown>\n#19 0x7feed593f4dc <unknown>\n",
+        "[14:00:04] Saved debug screenshot to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.png",
+        "[14:00:04] Saved debug page source to /home/runner/work/-icpplus-monitor/-icpplus-monitor/debug_screenshot.html",
+        "[14:00:04] Current URL at failure: https://mptmd.sede.gob.es/pagina?id=Extranjeria-cita-previa-extranjeria"
       ]
     }
   },
-  "last_run": "2026-11-22T01:53:52+00:00"
+  "last_run": "2026-11-22T14:00:06+00:00"
 }
